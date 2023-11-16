@@ -1,0 +1,122 @@
+{
+	"$schema": "https://www.raycast.com/schemas/extension.json",
+	"name": "identity-generator",
+	"title": "Identity Generator",
+	"description": "Generates random identity data to use when creating accounts",
+	"icon": "icon.png",
+	"author": "rvaccone",
+	"categories": [
+		"Security",
+		"Data"
+	],
+	"license": "MIT",
+	"preferences": [
+		{
+			"name": "primaryAction",
+			"type": "dropdown",
+			"description": "The primary action to perform on a vault item.",
+			"required": false,
+			"title": "Primary Action",
+			"default": "copy",
+			"data": [
+				{
+					"title": "Copy to Clipboard",
+					"value": "copy"
+				},
+				{
+					"title": "Paste to Active App",
+					"value": "paste"
+				},
+				{
+					"title": "Both",
+					"value": "both"
+				}
+			]
+		}
+	],
+	"commands": [
+		{
+			"name": "generateFullName",
+			"title": "Generate Full Name",
+			"description": "Generates a fake full name",
+			"mode": "no-view",
+			"preferences": [
+				{
+					"title": "Full name gender preference",
+					"name": "gender",
+					"description": "Gender preference of the generated names",
+					"type": "dropdown",
+					"required": false,
+					"default": "mixture",
+					"data": [
+						{
+							"title": "Mixture",
+							"value": "mixture"
+						},
+						{
+							"title": "Female",
+							"value": "female"
+						},
+						{
+							"title": "Male",
+							"value": "male"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "generateUsername",
+			"title": "Generate Username",
+			"description": "Generates a fake username",
+			"mode": "no-view"
+		},
+		{
+			"name": "generatePerson",
+			"title": "Generate Random Person Picture",
+			"description": "Generates a fake profile picture using thispersondoesnotexist",
+			"mode": "no-view",
+			"preferences": [
+				{
+					"title": "Picture Name",
+					"name": "PictureName",
+					"description": "Name of the profile picture",
+					"type": "textfield",
+					"required": false,
+					"default": "profile-picture"
+				},
+				{
+					"title": "Picture Location",
+					"name": "PictureLocation",
+					"description": "Download location for the profile picture",
+					"type": "directory",
+					"required": false,
+					"default": "~/Downloads"
+				}
+			]
+		}
+	],
+	"dependencies": {
+		"@raycast/api": "^1.59.0",
+		"axios": "^1.6.1",
+		"faker": "^5.5.3",
+		"fs": "^0.0.1-security"
+	},
+	"devDependencies": {
+		"@faker-js/faker": "^8.2.0",
+		"@raycast/eslint-config": "1.0.5",
+		"@types/faker": "^6.6.9",
+		"@types/node": "18.8.3",
+		"@types/react": "18.0.9",
+		"eslint": "^7.32.0",
+		"prettier": "^2.5.1",
+		"typescript": "^4.4.3"
+	},
+	"scripts": {
+		"build": "ray build -e dist",
+		"dev": "ray develop",
+		"fix-lint": "ray lint --fix",
+		"lint": "ray lint",
+		"publish": "npx @raycast/api@latest publish"
+	}
+}
